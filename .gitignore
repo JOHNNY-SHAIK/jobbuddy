@@ -1,0 +1,33 @@
+# Ignore virtual environments
+venv/
+.env/
+
+# Ignore Python bytecode
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Ignore build artifacts
+build/
+dist/
+
+# Ignore model files
+*.bin
+*.pt
+*.pth
+
+# Ignore logs
+*.log
+
+# Ignore large data
+*.csv.zip
+*.pickle
+*.pkl
+
+# VSCode settings
+.vscode/
+
+# OS files
+.DS_Store
+Thumbs.db
