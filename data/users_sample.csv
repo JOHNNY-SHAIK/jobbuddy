@@ -1,0 +1,4 @@
+user_id,name,title,skills,bio
+1,Alice,Student - Data Science,"python, pandas, numpy, SQL","Final year student, built small ML projects and internships."
+2,Bob,Backend Developer,"python, django, docker",2 years experience building APIs.
+3,Charlie,Frontend Learner,"javascript, react, html","Learning React, looking for frontend internships."

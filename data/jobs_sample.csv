@@ -1,0 +1,9 @@
+job_id,title,skills,description
+1,Junior Data Scientist,"python, pandas, numpy, machine learning, SQL","Work with datasets, build ML models, data cleaning and visualization."
+2,Backend Developer (Python),"python, django, REST, SQL, docker","Develop REST APIs, work with databases and deploy using Docker."
+3,Frontend Developer,"javascript, react, html, css",Build responsive web UIs using React and modern JS.
+4,Data Analyst Intern,"excel, sql, tableau, python, pandas","Perform reporting, dashboards, and data analysis."
+5,Machine Learning Engineer,"python, tensorflow, pytorch, machine learning, devops",Productionize ML models and collaborate with dev teams.
+6,QA Engineer,"manual testing, selenium, python, test plans",Write test cases and automate UI tests with Selenium.
+7,Cloud Engineer,"aws, terraform, docker, kubernetes","Manage infra, write IaC and support deployments."
+8,Business Analyst,"excel, sql, powerpoint, stakeholder management","Gather requirements, create reports, and help stakeholders."
