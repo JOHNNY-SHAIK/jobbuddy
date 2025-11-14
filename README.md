@@ -1,126 +1,234 @@
-\# JobBuddy — AI Job Recommendation System (TF-IDF + SBERT Hybrid)
+---
 
+# 🧠 JobBuddy — AI-Powered Job Recommendation System
 
-
-JobBuddy is a LinkedIn-style job recommendation engine built with  
-
-\*\*TF-IDF\*\*, \*\*Sentence-Transformers (SBERT)\*\*, and a \*\*Hybrid Ensemble\*\* model.
-
-
-
-It predicts the top-5 most relevant jobs for a user based on their  
-
-\*\*skills, title, and bio\*\*, achieving \*\*100% Precision@5\*\* on the demo dataset.
-
-
+A hybrid **TF-IDF + SBERT + Skill-Matching** job recommendation engine with **resume parsing**, **profile extraction**, and **Streamlit-based UI**.
+Designed to provide **precise, skill-aligned job recommendations**, especially for freshers and early-career candidates.
 
 ---
 
+## 🚀 Features
 
+### ✅ **Hybrid Recommendation Engine**
 
-\## 🚀 Features
-
-
-
-\- TF-IDF based lexical matching  
-
-\- SBERT semantic embedding model  
-
-\- Weighted skill matching  
-
-\- Hybrid score fusion (tunable α)  
-
-\- Evaluation pipeline (Precision@5)  
-
-\- Weak labeling + manual labeling support  
-
-\- Clean modular architecture  
-
-\- Pythonic, beginner-friendly code  
-
-\- Perfect GitHub portfolio project for ML/AI roles  
-
-
+* **TF-IDF lexical matching**
+* **SBERT semantic matching**
+* **Skill-overlap boosting (β parameter)**
+* Adjustable **α (TF-IDF ↔ SBERT)** for hybrid control
+* Highly accurate matching for **Java**, **Data Science**, **Cloud**, **Testing**, **Android**, etc.
 
 ---
 
+### 📄 **Resume Upload (PDF Parsing)**
 
+Upload a resume (PDF) and JobBuddy automatically extracts:
 
-\## 📁 Project Structure
+* **Title / Role**
+* **Skills**
+* **Short Bio / Summary**
 
+Powered by the internal `resume_parser.py` module.
 
+---
+
+### 🎯 **Smart Skill Detection**
+
+* Converts messy skills into normalized forms
+  Example:
+  `js → javascript`, `ml → machine learning`, `py → python`
+* Skill extraction works even when the user provides:
+
+  * free text
+  * resume text
+  * comma-separated skills
+
+---
+
+### 📊 **Top-N Job Recommendations**
+
+* Easily choose **Top 1–10** recommendations
+* Each result includes:
+
+  * Job title
+  * Required skills
+  * Matched skills
+  * Description
+  * Similarity score
+
+---
+
+### 🎨 **Modern Streamlit UI**
+
+* Left sidebar for settings
+* Clean, dark theme
+* Resume upload + interactive job cards
+* Sample profiles you can load instantly
+
+---
+
+## 🛠️ Project Structure
+
+```
 jobbuddy/
+│── data/
+│     ├── jobs_sample.csv
+│     ├── users_sample.csv
+│     └── tmp_resume.pdf
 │
-├── data/
-│ ├── jobs_sample.csv
-│ ├── users_sample.csv
-│ └── labels.csv
+│── src/
+│     ├── hybrid_recommender.py
+│     ├── preprocess.py
+│     ├── emb_recommender.py
+│     ├── resume_parser.py
+│     ├── add_java_jobs.py
+│     └── cli_test.py
 │
-├── src/
-│ ├── preprocess.py
-│ ├── recommender.py
-│ ├── emb_recommender.py
-│ ├── hybrid_recommender.py
-│ ├── run_baseline.py
-│ ├── run_emb_demo.py
-│ ├── run_final.py
-│ ├── tune_alpha.py
-│ ├── create_weak_labels.py
-│ └── eval_pipeline.py
-│
-└── README.md
-
+│── streamlit_app.py
+│── requirements.txt
+│── README.md
+│── venv/
+```
 
 ---
 
-## 🔧 Installation
+## ⚙️ Installation & Setup
 
-```bash
+### **1. Clone the repository**
+
+```
+git clone https://github.com/your-username/jobbuddy.git
+cd jobbuddy
+```
+
+### **2. Create virtual environment**
+
+```
 python -m venv venv
-.\venv\Scripts\activate
+source venv/bin/activate  # Mac/Linux
+venv\Scripts\activate     # Windows
+```
+
+### **3. Install dependencies**
+
+```
 pip install -r requirements.txt
+```
 
-▶️ Running the Model
-1. Generate Data
-python src/generate_sample_data.py
+### **4. Run Streamlit app**
 
-2. TF-IDF Baseline
-python src/run_baseline.py
+```
+streamlit run streamlit_app.py
+```
 
-3. Semantic Model
-python src/run_emb_demo.py
-
-4. Tune Hybrid α
-python src/tune_alpha.py
-
-5. Final Hybrid Recommender
-python src/run_final.py
-
-📊 Accuracy
-Model	Precision@5
-TF-IDF	66.7%
-SBERT	~80%
-Hybrid (tuned)	100%
-📬 Contact
-
-If you're a recruiter or engineer viewing this repo:
-I built this from scratch using Python, ML, embeddings, data preprocessing, evaluation, and model tuning.
-
-
-Save → Close.
+App starts at:
+🔗 **[http://localhost:8501](http://localhost:8501)**
 
 ---
 
-# 📤 Upload to GitHub Now
+## 🧩 Technical Architecture
 
-Go to the root folder (`C:\Users\johnn\Documents\jobbuddy`) and run:
+### 🔹 **1. Preprocessing**
 
-```powershell
-git init
-git add .
-git commit -m "AI JobBuddy - Full Hybrid Recommender System"
-git branch -M main
-git remote add origin https://github.com/<your-username>/jobbuddy.git
-git push -u origin main
+`preprocess.py`
 
+* Cleans text
+* Normalizes skills
+* Builds TF-IDF corpus
+
+### 🔹 **2. Embeddings (SBERT)**
+
+`emb_recommender.py`
+
+* Loads `"all-MiniLM-L6-v2"`
+* Encodes all job descriptions
+* Stores embeddings
+
+### 🔹 **3. Hybrid Logic**
+
+`hybrid_recommender.py` combines:
+
+```
+final_score = α * semantic_similarity 
+            + (1 - α) * tfidf_similarity
+            + β * skill_overlap
+```
+
+### 🔹 **4. Resume Parser**
+
+Extracts structured data from PDFs.
+
+### 🔹 **5. Streamlit UI**
+
+Interactive app with:
+
+* Resume upload
+* Auto-filled fields
+* Job cards
+* Settings (β, α, Top-N)
+
+---
+
+## 🧪 CLI Testing (Optional)
+
+Run internal accuracy tests:
+
+```
+python src/cli_test.py
+```
+
+---
+
+## 📈 Example Output
+
+**Input**:
+`Skills: Java, DSA`
+`Bio: I know Java and DSA`
+
+**Top Recommendations**:
+
+| Job Title             | Score | Matched Skills |
+| --------------------- | ----- | -------------- |
+| Junior Java Developer | 1.00  | java, dsa      |
+| Java Backend Engineer | 0.57  | java, sql      |
+| Android Developer     | 0.44  | java           |
+
+---
+
+## 📝 Notes & Tips
+
+* Increase **α** if you want *semantic* matching.
+* Increase **β** if you want *skill-based* matching.
+* Add more jobs using `add_java_jobs.py`.
+* For best results, fill at least 2 fields (skills + bio).
+
+---
+
+## 📌 Roadmap
+
+* 🔜 Real-time job scraping (LinkedIn / Naukri / Indeed)
+* 🔜 Fine-tuned domain-specific SBERT
+* 🔜 Skill gap analysis
+* 🔜 Resume scoring & feedback
+
+---
+
+## 🤝 Contributing
+
+Pull Requests are welcome.
+Ensure code follows existing module structure.
+
+---
+
+## 📄 License
+
+MIT License — Free for personal & academic use.
+
+---
+
+## 🧑‍💻 Author
+
+**JOHNNY (JobBuddy Developer)**
+AI • ML • NLP • Python • Streamlit
+
+---
 

@@ -7,3 +7,16 @@ job_id,title,skills,description
 6,QA Engineer,"manual testing, selenium, python, test plans",Write test cases and automate UI tests with Selenium.
 7,Cloud Engineer,"aws, terraform, docker, kubernetes","Manage infra, write IaC and support deployments."
 8,Business Analyst,"excel, sql, powerpoint, stakeholder management","Gather requirements, create reports, and help stakeholders."
+9,Java Backend Engineer,"java, spring, sql, rest",Build backend services using Java and Spring Boot.
+10,Junior Java Developer,"java, data structures and algorithms, oop",Entry-level Java developer role focused on core Java and DSA.
+11,Android Developer,"java, kotlin, android",Android app development role using Java/Kotlin.
+12,Java Backend Engineer,"java, spring, sql, rest",Build backend services using Java and Spring Boot.
+13,Security Analyst,"security, pentesting, network security",Monitor and secure production systems.
+14,QA Automation Engineer,"selenium, python, automation, testing",Write and maintain automated tests.
+15,Frontend React Developer,"javascript, react, html, css",Build interactive UI using React.
+16,DevOps Engineer,"devops, docker, kubernetes, terraform, ci/cd",Maintain infra and CI/CD pipelines.
+17,Node.js Backend Developer,"nodejs, express, mongodb, rest",Build scalable APIs with Node.js and Express.
+18,Frontend React Developer,"javascript, react, html, css",Build interactive UI using React.
+19,Business Analyst,"excel, sql, stakeholder management",Requirements gathering and reporting.
+20,Cloud Engineer,"aws, terraform, kubernetes, docker",Design and operate cloud infrastructure.
+21,Data Engineer,"spark, python, sql, aws",Build data pipelines and ETL workflows.
